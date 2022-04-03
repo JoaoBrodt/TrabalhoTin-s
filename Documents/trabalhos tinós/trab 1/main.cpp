@@ -3,37 +3,61 @@
 
 using namespace std;
 
-    class Data{
+    class DataN{
         
         public:
-    int dia;
-    int mes;
-    int ano;
     void ConfereDia (int dia);
     void ConfereMes (int mes);
     void ConfereDiaeMes (int dia, int mes);
     void ConfereAno (int ano);
+    void Cadastra(int dia, int mes, int ano);
+    
+        private:
+    int dia;
+    int mes;
+    int ano;
+    
     };
     
-    void Data::ConfereDia(int dia){
+    void DataN::Cadastra(int dia, int mes, int ano){
+        
+            cout<<"Insira a data inicial desejada em 3 etapas:\nDia(Com 2 dígitos):";
+        std::cin >> dia;
+
+    ConfereDia(dia);
+
+          cout<<"Mês(Com 2 dígitos):";
+        std::cin >> mes;
+
+     ConfereMes(mes);
+     ConfereDiaeMes(dia,mes);
+    
+            cout<<"Ano(Com 4 dígitos):";
+        std::cin >> ano;
+    
+     ConfereAno(ano);
+
+    }
+    
+    void DataN::ConfereDia(int dia){
         if (dia>31 || dia<1){
     cout<<"ERRO.\nEsse valor não pode ser aceito para o campo data."<<endl;
         };
     }
     
-    void Data::ConfereMes(int mes){
+    void DataN::ConfereMes(int mes){
         if (mes>12 || mes<1){
     cout<<"ERRO\nEsse valor não pode ser aceito para o campo data."<<endl;
         };
     }
     
-    void Data::ConfereDiaeMes(int dia, int mes){
+    void DataN::ConfereDiaeMes(int dia, int mes){
         if (mes==4 && dia==31 || mes==6 && dia==31 || mes==9 && dia==31 || mes==11 && dia==31){
     cout<<"ERRO\nO mês selecionado possui apenas 30 dias." <<endl;
         };
     }
     
-    void Data::ConfereAno(int ano){
+    void DataN::ConfereAno(int ano){
         if (ano<0){
     cout<<"ERRO\nEsse valor não pode ser aceito para o campo data." <<endl;
         };
@@ -46,24 +70,10 @@ using namespace std;
     int mes; 
     int ano;
     
-    Data *Data1=new Data();
-    
-    cout<<"Insira a data inicial desejada em 3 etapas:\nDia (Com 2 dígitos):";
-std::cin >> dia;
-
-    Data1->ConfereDia(dia);
-
-    cout<<"Mês (Com 2 dígitos):";
-std::cin >> mes;
-
-  Data1->  ConfereMes(mes);
-  Data1->  ConfereDiaeMes(dia,mes);
-
-    cout<<"Ano (Com 4 dígitos):";
-std::cin >> ano;
-    
-  Data1->  ConfereAno(ano);
-
+    DataN *Data1=new DataN();
+ 
+ Data1->Cadastra(dia, mes, ano);
+ 
     return 0;
 }
     
